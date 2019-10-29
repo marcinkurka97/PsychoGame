@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -665905902194529157}
   m_Layer: 0
   m_Name: arrow
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,5 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aacac27f0e97d54a8d6ee62e51b3e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDeathBlood: {fileID: 6722745369403858681, guid: 8b46bf0078eaceb45a58fb859cc0e441,
+    type: 3}
   hitEffect: {fileID: 5823682759098444083, guid: 5273e2a9a76e2ce41b63ce042ee7a9f4,
     type: 3}
