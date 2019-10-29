@@ -6,8 +6,6 @@ TagManager:
   tags:
   - item
   - canvas
-  - Enemy
-  - Bullet
   layers:
   - Default
   - TransparentFX
