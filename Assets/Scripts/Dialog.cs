@@ -17,7 +17,7 @@ public class Dialog : MonoBehaviour
     void Start()
     {
         enter = false;
-        canvas.GetComponent<Canvas>().enabled = false;
+        // canvas.GetComponent<Canvas>().enabled = false;
         counter = 0;
         dialog = GameObject.Find("Text").GetComponent<Text>();
     }
