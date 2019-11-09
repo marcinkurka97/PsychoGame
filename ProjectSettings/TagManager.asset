@@ -6,6 +6,9 @@ TagManager:
   tags:
   - item
   - canvas
+  - Enemy
+  - Bullet
+  - Baseball
   layers:
   - Default
   - TransparentFX
