@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
     Vector2 mousePos;
     public Camera cam;
+    public Animator animator;
 
     // Update is called once per frame
     void Update()
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        animator.SetFloat("Speed", Mathf.Abs(movement.magnitude));
     }
 
     void FixedUpdate()
