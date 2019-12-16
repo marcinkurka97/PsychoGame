@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Bullet
   - Baseball
+  - Pistol
   layers:
   - Default
   - TransparentFX
