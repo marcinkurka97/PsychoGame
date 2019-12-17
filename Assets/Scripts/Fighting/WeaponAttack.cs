@@ -78,14 +78,17 @@ public class WeaponAttack : MonoBehaviour
 
     // Check if enemy is in mele range
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Enemy") {
+        if(other.gameObject.tag == "EnemyDestroy") {
             enemyInMeleRange = true;
+           // enemyReference = other.gameObject;
+        }
+        if(other.gameObject.tag == "Enemy") {
             enemyReference = other.gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject.tag == "Enemy") {
+        if(other.gameObject.tag == "EnemyDestroy") {
             enemyInMeleRange = false;
             enemyReference = null;
         }
@@ -101,15 +104,15 @@ public class WeaponAttack : MonoBehaviour
         }
 
         if(weaponName == "Baseball") {
-            animator.SetTrigger("BaseballAttack");
+            GetComponent<Animator>().SetTrigger("BaseballAttack");
         }
 
         // Mele attack
-        if(enemyInMeleRange && enemyReference != null) {
+        /*if(enemyInMeleRange && enemyReference != null) {
             GameObject effect = Instantiate(enemyDeathBlood, enemyReference.transform.position, Quaternion.identity);
             Destroy(effect, 1f);
             Destroy(enemyReference);
-        }
+        }*/
     }
 
     void Shoot() {
@@ -133,5 +136,13 @@ public class WeaponAttack : MonoBehaviour
         curWeapon.transform.position = this.transform.position;
         curWeapon.SetActive(true);
         setWeapon(null, "", 0.5f, false);
+    }
+
+    public void BaseballAttackEvent() {
+        if(enemyInMeleRange && enemyReference != null) {
+        GameObject effect = Instantiate(enemyDeathBlood, enemyReference.transform.position, Quaternion.identity);
+        Destroy(effect, 1f);
+        Destroy(enemyReference);
+        }
     }
 }
