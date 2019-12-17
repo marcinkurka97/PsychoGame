@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     EnemyAI enemyAI;
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.gameObject.tag == "Enemy") {
+        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyHumanoid") {
             enemyAI = collision.gameObject.GetComponent<EnemyAI>();
             enemyAI.Killed();
             GameObject effect = Instantiate(enemyDeathBlood, transform.position, Quaternion.identity);

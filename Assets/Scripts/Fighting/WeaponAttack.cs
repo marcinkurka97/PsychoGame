@@ -36,7 +36,7 @@ public class WeaponAttack : MonoBehaviour
     {
         if(Input.GetMouseButton(0))
         {
-            attack();
+            StartCoroutine(attack());
         }
         if(Input.GetMouseButtonDown(0))
         {
@@ -74,15 +74,18 @@ public class WeaponAttack : MonoBehaviour
         if(name == "Baseball") {
             animator.SetBool("Baseball", true);
         }
+
+        if(name == "Pistol") {
+            animator.SetBool("GunInHand", true);
+        }
     }
 
     // Check if enemy is in mele range
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "EnemyDestroy") {
             enemyInMeleRange = true;
-           // enemyReference = other.gameObject;
         }
-        if(other.gameObject.tag == "Enemy") {
+        if(other.gameObject.tag == "Enemy" || other.gameObject.tag == "EnemyHumanoid") {
             enemyReference = other.gameObject;
         }
     }
@@ -94,7 +97,7 @@ public class WeaponAttack : MonoBehaviour
         }
     }
 
-    public void attack()
+    public IEnumerator attack()
     {
         if(gun) {
             if(Time.time > nextFire) {
@@ -103,16 +106,17 @@ public class WeaponAttack : MonoBehaviour
             }
         }
 
-        if(weaponName == "Baseball") {
-            GetComponent<Animator>().SetTrigger("BaseballAttack");
+        if(weaponName == "") {
+            GetComponent<Animator>().SetBool("MeleAttack",true);
+            yield return new WaitForSeconds(0.4f);
+            GetComponent<Animator>().SetBool("MeleAttack",false);
         }
 
-        // Mele attack
-        /*if(enemyInMeleRange && enemyReference != null) {
-            GameObject effect = Instantiate(enemyDeathBlood, enemyReference.transform.position, Quaternion.identity);
-            Destroy(effect, 1f);
-            Destroy(enemyReference);
-        }*/
+        if(weaponName == "Baseball") {
+            GetComponent<Animator>().SetBool("BaseballAttack",true);
+            yield return new WaitForSeconds(0.35f);
+            GetComponent<Animator>().SetBool("BaseballAttack",false);
+        }
     }
 
     void Shoot() {
@@ -132,6 +136,10 @@ public class WeaponAttack : MonoBehaviour
             animator.SetBool("Baseball", false);
         }
 
+        if(weaponName == "Pistol") {
+            animator.SetBool("GunInHand", false);
+        }
+
         weaponName = "";
         curWeapon.transform.position = this.transform.position;
         curWeapon.SetActive(true);
@@ -140,9 +148,9 @@ public class WeaponAttack : MonoBehaviour
 
     public void BaseballAttackEvent() {
         if(enemyInMeleRange && enemyReference != null) {
-        GameObject effect = Instantiate(enemyDeathBlood, enemyReference.transform.position, Quaternion.identity);
-        Destroy(effect, 1f);
-        Destroy(enemyReference);
+            GameObject effect = Instantiate(enemyDeathBlood, enemyReference.transform.position, Quaternion.identity);
+            Destroy(effect, 1f);
+            enemyReference.GetComponent<EnemyAI>().Killed();
         }
     }
 }

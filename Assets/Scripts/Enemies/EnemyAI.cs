@@ -22,6 +22,9 @@ public class EnemyAI : MonoBehaviour
 
     private int randomSpot;
 
+    public GameObject ghostBody;
+    public GameObject humanoidBody;
+
     void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -37,7 +40,14 @@ public class EnemyAI : MonoBehaviour
 
     public void Killed()
     {
-        Destroy(gameObject);
+        if(transform.parent.tag == "Enemy") {
+            Instantiate(ghostBody, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        if(transform.parent.tag == "EnemyHumanoid") {
+            Instantiate(humanoidBody, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 
     void UpdatePath()
@@ -82,7 +92,6 @@ public class EnemyAI : MonoBehaviour
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
-        // transform.Translate(direction * speed * Time.deltaTime);
         rb.AddForce(force);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
@@ -95,9 +104,9 @@ public class EnemyAI : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-
-        if (col.tag == "Player" && !IsItemBetween(target, transform, "item"))
+        if (col.tag == "PlayerCollider" && !IsItemBetween(target, transform, "item"))
         {
+            animator.SetBool("IsAttacking", true);
             isFollowing = true;
             speed = 1200f;
             Vector3 direction = target.position - transform.position;
@@ -108,6 +117,7 @@ public class EnemyAI : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        animator.SetBool("IsAttacking", false);
         isFollowing = false;
         speed = 400f;
     }
