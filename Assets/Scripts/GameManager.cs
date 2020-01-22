@@ -7,15 +7,11 @@ public class GameManager : MonoBehaviour
     public static bool gameIsPaused = false;
     public GameObject pauseMenuUI;
 
+    private SaveManager _saveManager = new SaveManager();
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
-            if(gameIsPaused) {
-                Resume();
-            } else {
-                Pause();
-            }
-        }
+        ListenForKeyDown();
     }
 
     void Resume() {
@@ -28,5 +24,45 @@ public class GameManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
+    }
+
+    private void ListenForKeyDown()
+    {
+        ListenForPause();
+        ListenForSave();
+        ListedForLoad();
+    }
+
+    private void ListenForPause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
+    private void ListenForSave()
+    {
+        if(Input.GetKeyDown(KeyCode.F5))
+        {
+            _saveManager.SaveGameState();
+        }
+    }
+
+    private void ListedForLoad()
+    {
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            //_saveManager.LoadGameState();
+            _saveManager.LoadGameState();
+        }
+
     }
 }
