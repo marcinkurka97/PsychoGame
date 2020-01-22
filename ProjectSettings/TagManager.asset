@@ -5,7 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - item
+  - canvas
+  - Enemy
+  - Bullet
   - Baseball
+  - Pistol
+  - EnemyDestroy
+  - PlayerCollider
+  - EnemyHumanoid
   layers:
   - Default
   - TransparentFX
