@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F6))
         {
+            //_saveManager.LoadGameState();
             _saveManager.LoadGameState();
         }
 

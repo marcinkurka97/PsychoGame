@@ -29,9 +29,12 @@ public class SaveManager : MonoBehaviour
         if (!string.IsNullOrEmpty(saveInstance.ActiveSceneName) && !SceneManager.GetActiveScene().name.Equals(saveInstance.ActiveSceneName))
             SceneManager.LoadScene(saveInstance.ActiveSceneName);
 
-        foreach (var go in saveInstance.GameObjects)
+        for (int i = 0; i < 2; i++)
         {
-            LoadGameObject(go);
+            foreach (var go in saveInstance.GameObjects)
+            {
+                LoadGameObject(go);
+            }
         }
 
         Debug.Log("Game loaded");
@@ -144,8 +147,6 @@ public class SaveManager : MonoBehaviour
     {
         var id = state.Id;
         var name = state.Name;
-        var position = state.Position;
-        var rotation = state.Rotation;
 
         var objById = FindGameObjectById(id);
         if (objById != null)
