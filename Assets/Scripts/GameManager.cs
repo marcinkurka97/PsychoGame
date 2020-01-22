@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenuUI;
 
     private SaveManager _saveManager = new SaveManager();
+    public string currentActiveType;
 
     void Update()
     {
