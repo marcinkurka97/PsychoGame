@@ -8,7 +8,10 @@ public class Dialog : MonoBehaviour
 
     public GameObject player;
     public GameObject canvas;
+    public GameObject baba;
+    public GameObject chop; 
     bool enter = false;
+    bool activated;
     int counter;
 
     Text dialog;
@@ -20,33 +23,46 @@ public class Dialog : MonoBehaviour
         // canvas.GetComponent<Canvas>().enabled = false;
         counter = 0;
         dialog = GameObject.Find("Text").GetComponent<Text>();
+
+        activated = false;
+
+        chop.GetComponent<Image>().enabled = false;
+        baba.GetComponent<Image>().enabled = true;
+
     }
 
     void Update()
     {
-        if(enter == true && Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             canvas.GetComponent<Canvas>().enabled = true;
+            counter = 1;
+            activated = true;
+        }
+
+        if (activated && Input.GetKeyDown(KeyCode.Q))
+        {
             counter++;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) &&  enter == true)
+        if (counter == 1)
         {
-            counter++;
-            
-            if (counter >= 2)
-            {
-                counter = 2;
-            }
+            chop.GetComponent<Image>().enabled = false;
+            baba.GetComponent<Image>().enabled = true;
+            dialog.text = "JAK TO JEST BYĆ SKRYBĄ?";
         }
-
-        if(counter == 1)
-        {
-            dialog.text = "Ah, szkoda gadać";
-        }
+        else
         if (counter == 2)
         {
-            dialog.text = "Szkoda szczempić ryja";
+            baba.GetComponent<Image>().enabled = false;
+            chop.GetComponent<Image>().enabled = true;
+
+            dialog.text = "A NO TO NIE MA TAK...";
+        }
+        else
+        if (counter == 3)
+        {
+            dialog.text = "...ŻE DOBRZE CZY NIE DOBRZE";
         }
     }
 

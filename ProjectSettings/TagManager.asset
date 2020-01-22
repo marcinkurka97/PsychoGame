@@ -9,6 +9,10 @@ TagManager:
   - Enemy
   - Bullet
   - Baseball
+  - Pistol
+  - EnemyDestroy
+  - PlayerCollider
+  - EnemyHumanoid
   layers:
   - Default
   - TransparentFX
