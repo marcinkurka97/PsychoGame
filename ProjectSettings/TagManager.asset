@@ -13,6 +13,7 @@ TagManager:
   - EnemyDestroy
   - PlayerCollider
   - EnemyHumanoid
+  - plague
   layers:
   - Default
   - TransparentFX

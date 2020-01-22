@@ -14,6 +14,8 @@ public class Dialog : MonoBehaviour
     bool activated;
     int counter;
 
+    public GameObject plague;
+
     Text dialog;
 
 
@@ -24,7 +26,7 @@ public class Dialog : MonoBehaviour
         counter = 0;
         dialog = GameObject.Find("Text").GetComponent<Text>();
 
-        activated = false;
+        activated = true;
 
         chop.GetComponent<Image>().enabled = false;
         baba.GetComponent<Image>().enabled = true;
@@ -37,32 +39,68 @@ public class Dialog : MonoBehaviour
         {
             canvas.GetComponent<Canvas>().enabled = true;
             counter = 1;
-            activated = true;
+            //activated = true;
         }
 
         if (activated && Input.GetKeyDown(KeyCode.Q))
         {
             counter++;
+           
         }
 
+        if (counter == 0)
+        {
+            chop.GetComponent<Image>().enabled = true;
+            baba.GetComponent<Image>().enabled = false;
+            dialog.text = "...";
+        }
+        else
         if (counter == 1)
         {
-            chop.GetComponent<Image>().enabled = false;
-            baba.GetComponent<Image>().enabled = true;
-            dialog.text = "JAK TO JEST BYĆ SKRYBĄ?";
+
+            dialog.text = "PANIE! PANIE, COŚ PAN?!";
         }
         else
         if (counter == 2)
         {
-            baba.GetComponent<Image>().enabled = false;
-            chop.GetComponent<Image>().enabled = true;
 
-            dialog.text = "A NO TO NIE MA TAK...";
+            dialog.text = "KIM TY JESTEŚ PAJACU?";
         }
-        else
         if (counter == 3)
         {
-            dialog.text = "...ŻE DOBRZE CZY NIE DOBRZE";
+            chop.GetComponent<Image>().enabled = false;
+            baba.GetComponent<Image>().enabled = true;
+
+            dialog.text = "WŁAŚCIWE PYTANIE BRZMI...";
+        }
+        else
+        if (counter == 4)
+        {
+
+            dialog.text = "...KIM TY JESTEŚ?";
+        }
+        else
+        if (counter == 5)
+        {
+            chop.GetComponent<Image>().enabled = true;
+            baba.GetComponent<Image>().enabled = false;
+
+            dialog.text = "ZA DRZWI! RAZ KURCZĘ";
+        }
+        else
+        if (counter == 6)
+        {
+
+            dialog.text = "BO CIĘ ODHOLUJĘ";
+        }
+       else
+        if (counter == 7)
+        {
+
+            activated = false;
+            canvas.GetComponent<Canvas>().enabled = false;
+            //Destroy(gameObject.FindWithTag("plague"));
+            Destroy(plague);
         }
     }
 
