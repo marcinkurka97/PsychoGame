@@ -28,7 +28,7 @@ public class Stairs : MonoBehaviour
     {
         //SceneManager.LoadScene("Level3", LoadSceneMode.Additive);
         //SceneManager.UnloadScene("Level1");
-        SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene("Level3");
         
     }
 

@@ -34,5 +34,8 @@ public class LegDir : MonoBehaviour
         }
 
         animator.SetFloat("Speed", Mathf.Abs(player.movement.magnitude));
+        if(!player.reachedCutSceneDestination) {
+            animator.SetFloat("Speed", Mathf.Abs(player.direction.magnitude));
+        }
     }
 }
