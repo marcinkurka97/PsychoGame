@@ -34,18 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-<<<<<<< HEAD:Assets/Scripts/PlayerMovement.cs
-        //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        //Vector2 lookDir = mousePos - rb.position;
-        //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        //rb.rotation = angle;
-=======
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         Vector2 lookDir = mousePos - rb.position;
 
         angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
->>>>>>> d1b4f3c65099617c6ef23750cc32f17c296b87be:Assets/Scripts/Movement/PlayerMovement.cs
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
