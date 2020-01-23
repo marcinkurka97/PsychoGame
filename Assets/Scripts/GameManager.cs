@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static bool gameIsPaused = false;
     public static bool isInCutScene = true;
     public GameObject pauseMenuUI;
+	public string currentActiveType;
+
 
     private SaveManager _saveManager = new SaveManager();
 

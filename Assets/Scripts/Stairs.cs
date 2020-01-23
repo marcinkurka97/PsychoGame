@@ -10,7 +10,7 @@ public class Stairs : MonoBehaviour
     /// cza zrobic swapa ze sceny pierwszzego pietra na parter
     /// </summary>
 
-    private string levelName = "Level3";
+    private string levelName = "Level2";
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class Stairs : MonoBehaviour
     {
         //SceneManager.LoadScene("Level3", LoadSceneMode.Additive);
         //SceneManager.UnloadScene("Level1");
-        SceneManager.LoadScene("Level3");
+        SceneManager.LoadScene("Level2");
         
     }
 

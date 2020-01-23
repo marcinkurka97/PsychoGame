@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public bool moving = false;
     public GameObject cutScenePoint;
-    public bool reachedCutSceneDestination = true;
+    public bool reachedCutSceneDestination = false;
 
     // Update is called once per frame
     void Update(){
@@ -58,9 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
     void MovePlayerToPoint() {
         direction = (cutScenePoint.transform.position - transform.position).normalized;
-        rb.MovePosition(rb.position + direction * moveSpeed * Time.deltaTime);
+        rb.MovePosition(rb.position + direction * moveSpeed / 2 * Time.deltaTime);
         animator.SetFloat("Speed", Mathf.Abs(direction.magnitude));
-
 
         if(Vector2.Distance(cutScenePoint.transform.position, transform.position) < 1f) {
             reachedCutSceneDestination = true;
