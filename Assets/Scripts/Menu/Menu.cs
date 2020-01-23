@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    LevelTransition levelTransition;
+    void Start() {
+        levelTransition = FindObjectOfType<LevelTransition>();
+    }
+
     public void StartGame() {
-        SceneManager.LoadScene("Level0");
+        levelTransition.FadeToLevel("Level0");
     }
 }

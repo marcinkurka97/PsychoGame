@@ -18,9 +18,11 @@ public class BedEnterDialog : MonoBehaviour
     int counter;
 
     Text dialog;
+    LevelTransition levelTransition;
 
 
     void Start() {
+        levelTransition = FindObjectOfType<LevelTransition>();
         enter = false;
         // canvas.GetComponent<Canvas>().enabled = false;
         counter = 0;
@@ -70,7 +72,8 @@ public class BedEnterDialog : MonoBehaviour
     IEnumerator LoadNextLevel()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("Level1");
+        levelTransition.FadeToLevel("Level1");
+        // SceneManager.LoadScene("Level1");
     }
 
     void OnTriggerEnter2D(Collider2D other) {

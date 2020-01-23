@@ -4247,8 +4247,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1385712679}
   canvas: {fileID: 392277850}
-  baba: {fileID: 1768786861}
+  baba: {fileID: 0}
   chop: {fileID: 1503072336}
+  plague: {fileID: 0}
 --- !u!61 &360513738
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4791,6 +4792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 977395718}
+  currentActiveType: 
 --- !u!4 &434503574
 Transform:
   m_ObjectHideFlags: 0
@@ -17816,12 +17818,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4971746405614977409, guid: 7c8c8496b72926042bc1306484acba88,
     type: 3}
   m_PrefabInstance: {fileID: 1197612130}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1768786861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7369877424098643581, guid: a027b5e3835dd4e4788e25aba8f52562,
-    type: 3}
-  m_PrefabInstance: {fileID: 767231771}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1770285615 stripped
 Transform:
